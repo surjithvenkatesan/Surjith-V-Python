@@ -1,0 +1,26 @@
+import random
+while True:
+    choices = ["stone", "paper", "scissors"]
+
+    user = input("Enter stone, paper or scissors: ").lower()
+
+    computer = random.choice(choices)
+    
+    print("user :",user)
+    print("")
+    
+    if user not in choices:
+        print("invalied plz enter correct one")
+        continue
+    print("")
+    print("computer :",computer)        
+    if user==computer:
+        print("match draw , play again")
+    elif user=="stone"and computer=="scissors" or user=="paper"and computer=="stone" or user=="scissors" and computer=="paper":
+        print("you win aiiyaa")  
+    else:
+        print("opponent win daiiii ")
+        
+    
+    print()
+    print("***********")
