@@ -1,0 +1,62 @@
+s=7
+for i in range(s):
+    for j in range(s):
+        if (i==0 and j!=0) or (i==s-1 and j!=s-1) or i==s//2 or (i==s//s and j==s-s)or (i==2 and j==s-s) or (j==s-1 and i==4)or(j==s-1 and i==5):
+            print("S",end="")
+        else:
+            print(" ",end="")
+    print()
+
+u=7
+for i in range(u):
+    for j in range(u):
+        if (j==0 or i==u-1 or j==u-1):
+            print("U",end="")
+        else:
+            print(" ",end="")
+    print()
+
+r=7
+for i in range(r):
+    for j in range(r):
+        if j==0 or (i==r//2 and j!=r-1 and j!=r-2 and j!=r-3) or i==0 or (j==r-1 and i==r-1) or(i==2 and j==r-1)or(i>=r//2 and i==j) or (j==r-1 and i==1)or (j==r-2 and i==3):
+            print("R",end="")
+        else:
+            print(" ",end="")
+    print()
+
+J=7
+for i in range(J):
+    for j in range(J):
+        if (j==J-1 and i!=J-1) or (j==J-J and i==j-2) or i==J-1 or(j==0 and (i==J-2 or i==J-3)):
+            print("J",end="")
+        else:
+            print(" ",end="")
+    print()
+
+I=7
+for i in range(I):
+    for j in range(I):
+        if (i==0 or j==I//2 or i==I-1):
+            print("I",end="")
+        else:
+            print(" ",end="")
+    print()
+
+T=7
+for i in range(T):
+    for j in range(T):
+        if (i==0 or j==T//2 ):
+            print("T",end="")
+        else:
+            print(" ",end="")
+    print()
+
+H=7
+for i in range(H):
+    for j in range(H):
+        if (j==0 or i==H//2 or j==H-1):
+            print("H",end="")
+        else:
+            print(" ",end="")
+    print()
