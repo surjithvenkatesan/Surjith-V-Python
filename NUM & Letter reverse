@@ -1,0 +1,22 @@
+# num reverse
+n=int(input("enter num: "))
+
+while n>0:
+    d=n%10
+    print(d,end="_")
+    n=n//10
+
+print()
+
+
+#Palindrom
+K=input("name enter  ")
+g=""
+for i in K[::-1]:
+    g=g+i
+    
+if g==K:
+    print("correct pali")
+else:
+    print("NO pali ")
+    
