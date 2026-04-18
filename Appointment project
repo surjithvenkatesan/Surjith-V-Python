@@ -1,0 +1,130 @@
+name=input("Enter your name :").strip()
+def age_get():
+    try:
+        age=int(input("Enter your age :"))
+        return age
+    except:
+        print("Please Enter age in number , eg:26 :")
+        age_get()        
+age_get()        
+gender=input("Enter Gender : M or F or T :")
+con_num=int(input("Enter contact num :"))
+ps_word=input("Enter your password :")
+
+print(".........personal details entered successful ..........")
+
+
+def login():
+    user=input("enter patient name :")
+    if user==name:
+        pa_wo=input("Enter your password :")
+        if pa_wo==ps_word:
+            print("Login successful..")
+            return user
+
+        else:
+            print("password incorrect..")
+            login()
+    else:
+        print(" user name incorrect :")
+        login()    
+login()
+
+
+
+print("Available department.. choise which you want")
+
+l1=["1.general", "2.cardiology", "3.paediatrics", "4.orthopaedics", "5.Dermatology","6.radiology"]
+days = ["monday","tuesday","wednesday","thursday","friday","saturday","sunday"]
+
+time_slots = ["9AM-10AM", "10AM-11AM", "11AM-12PM", "2AM-3AM","3AM-4AM"]
+
+
+
+
+def payment():
+    print("\n...only online transation is available...")
+    s=input("\n respose Yes or NO " )
+    if s=="Yes":
+        amount=int(input("enter appointment amount RS:399 only:"))
+        if amount==399:
+            print("payment processing")
+            print("+"*40)
+            print("-"*10, "SURJITH MULTI HOSPITAL","-"*10)
+            print("\n")
+            print(f"Name           : {user}")
+            print(f"contact num    : {con_num}")
+            print(f"Slot Day       : {day}")
+            print(f"slot Time      : {user_time}")
+            print(f"Payment amount : {amount}")
+            print("+"*40)
+            print("-"*10," Thank You ","-"*10)
+        else:
+            print("enter your correct amount")
+            payment()
+            
+    else:
+        print("You canceled your payment")
+            
+
+
+def time_slot(day):
+    print("Time slots:", time_slots)
+    user_time = input("Enter time: ")
+
+    bookings.setdefault(day, []).append(user_time)
+
+    print(" Selected :", day, "-->", user_time)
+    payment()
+
+
+
+bookings={}
+
+
+def av_days():
+    print("Days:", days)
+    day = input("Enter day: ").lower()
+
+    if day in days:
+        time_slot(day)
+    else:
+        print("\nInvalid day....")
+        av_days()
+
+
+def doc_name():
+    try:
+        dep_name = int(input("\nEnter the department number (1-6): "))
+    except ValueError:
+        print("Please enter a number!")
+        return doc_name()
+
+    if dep_name == 1:
+        print("Selected: Dr. Logu")
+        av_days()
+    elif dep_name == 2:
+        print("Selected: Dr. Bharani")
+        av_days()
+    elif dep_name == 3:
+        print("Selected: Dr. Imran")
+        av_days()
+    elif dep_name == 4:
+        print("Selected: Dr. Jamuna")
+        av_days()
+    elif dep_name == 5:
+        print("Selected: Dr. Viji")
+        av_days()
+    elif dep_name == 6:
+        print("Selected: Dr. Dinesh")
+        av_days()
+    else:
+        print("Select correct department number...")
+        doc_name()
+
+doc_name()
+    
+
+
+
+
