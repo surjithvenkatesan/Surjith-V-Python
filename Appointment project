@@ -126,5 +126,193 @@ doc_name()
     
 
 
+import pywhatkit as pk
+from datetime import datetime
+import random
+import pygame
+
+print("Poject Started...")
+while True :
+    name=input("Enter your name :").strip()
+    if name.isalpha():
+        break
+    else:
+        print("enter your name as alphabetic")
+    
+
+num=random.randint(100,9999)
+APID=f"HEALTH{num}"
+
+bill_id=random.randint(10001,99999)
+Bill_id=f"ID{bill_id}"
+now=datetime.now()
+Now=now.strftime("%d-%m-%Y %H:%M")
+
+
+
+def age_get():
+    try:
+        age=int(input("Enter your age :"))
+        return age
+    except:
+        print("Please Enter age in number , eg:26 :")
+        age_get()        
+age_get()        
+gender=input("Enter Gender : Male or Female :").capitalize()
+while True:
+    con_num=input("Enter contact num :")
+    if con_num.isdigit and len(con_num)==10:
+        ori_num=con_num
+        mask=con_num[:3]+"*****"+con_num[-2:]
+        break
+    else:
+        print(" enter correct 10 digit num..")
+
+ps_word=input("Enter your password :")
+
+
+print("\n.........personal details entered successful ..........")
+
+
+def login():
+    global user
+    user=input("\nenter patient name :")
+    if user==name:
+        pa_wo=input("\nEnter your password :")
+        if pa_wo==ps_word:
+            print(f"\nHospital Patient ID : {APID}")
+            print("\nLogin successful...")
+
+        else:
+            print("\npassword incorrect...")
+            login()
+    else:
+        print("\nUser name is incorrect.. Plz enter correct name")
+        login()    
+login()
+
+
+print("\nAvailable department.. choise which you want")
+
+l1=["1. General", "2. Cardiology", "3. Paediatrics", "4. Orthopaedics", "5. Dermatology","6. Radiology"]
+
+days = ["Monday","Tuesday","wednesday","Thursday","Friday","Saturday","Sunday"]
+
+time_slots = ["9AM-10AM", "10AM-11AM", "11AM-12PM", "2AM-3AM","3AM-4AM"]
+
+
+for i in l1:
+    print(i)
+
+
+
+
+def payment():
+    print("\n>>> You need to select Online or Offline payment <<<")
+
+    while True:
+        
+        On_line = input("\nOnline or offline: ").strip().lower()
+
+        if On_line == "online":
+            amount=int(input("\nEnter the amount is 399 :"))
+            print("\nPayment under processing")
+            if amount==399:
+                print("\n Bill processing... ")
+                msg_wh=f"""
+
+                >>>TVK MULTISPECIALITY  HOSP<<<
+                _______________________________
+                NAME           : {user}
+                GENDER         : {gender}
+                PATIENT ID     : {APID}
+                PHONE NO       : {mask}
+                SLOT DAY       : {day}
+                SLOT TIME      : {user_time}
+                PAYMENT AMOUNT : {amount}
+                BILL ID        : {Bill_id}
+                BILL TIME      : {Now}
+                _______________________________
+                -------------------------------
+                .....Take Care Your Health.....
+                _______________________________
+                      ...Thank You...
+                _______________________________
+            """
+                print(msg_wh)
+                print("\n Bill is sending to your whatApp message")
+                #pk.sendwhatmsg_instantly(f"+91{ori_num}",msg_wh)
+                break
+            else:
+                print("\nplease enter correct amount is 399.00/-")            
+        else:
+            print(" Offline--> Please Visit Hospital and Book your Slot ")
+            
+        
+
+def time_slot(day):
+    print("\nTime slots:", time_slots)
+    global user_time
+    user_time = input("\nEnter time: ")
+    if user_time in time_slots:
+        
+        bookings.setdefault(day, []).append(user_time)
+        print("\n Selected :", day, "-->", user_time)
+        payment()
+    else:
+        print("Please enter available time slot")
+        time_slot(day)
+
+bookings={}
+
+
+def av_days():
+    global day
+    print("Days:", days)
+    day = input("Enter day: ").lower().title()
+
+    if day in days:
+        time_slot(day)
+    else:
+        print("\nInvalid day....")
+        av_days()
+
+
+def doc_name():
+    global dep_name
+    try:
+        dep_name = int(input("\nEnter the department number (1-6): "))
+    except ValueError:
+        print("Please enter a correct number..! (1-6)")
+        return doc_name()
+
+    if dep_name == 1:
+        print("\nSelected: Dr. Logu ")
+        av_days()
+    elif dep_name == 2:
+        print("\nSelected: Dr. Bharani")
+        av_days()
+    elif dep_name == 3:
+        print("\nSelected: Dr. Imran")
+        av_days()
+    elif dep_name == 4:
+        print("\nSelected: Dr. Jamuna")
+        av_days()
+    elif dep_name == 5:
+        print("\nSelected: Dr. Viji")
+        av_days()
+    elif dep_name == 6:
+        print("\nSelected: Dr. Dinesh")
+        av_days()
+    else:
+        print("\nSelect correct department number...")
+        doc_name()
+
+doc_name()
+    
+
+
+
+
 
 
